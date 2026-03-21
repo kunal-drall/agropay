@@ -1,0 +1,24 @@
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+
+# Go
+backend/bin/
+backend/*.exe
+
+# Leo / Aleo build artifacts
+contracts/agropay/build/
+
+# Env files
+**/.env
+**/.env.local
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
