@@ -1,0 +1,6 @@
+{
+    "program": "agropay_v1.aleo",
+    "version": "0.1.0",
+    "description": "Private community finance — savings circles on Aleo",
+    "license": "MIT"
+}
