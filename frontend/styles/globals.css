@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --earth-bg: #0d0d14;
+  --earth-text: #f1f5f9;
+  --earth-muted: #64748b;
+  --leaf: #8b5cf6;
+  --wheat: #f59e0b;
+  --rust: #f87171;
+  --border: rgba(255, 255, 255, 0.08);
+  --surface: #13131f;
+  --surface-elevated: #1a1a2e;
+}
+
+@layer base {
+  body {
+    background-color: var(--earth-bg);
+    color: var(--earth-text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.3);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--earth-bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+}
+
+@layer components {
+  /* ── Skeleton ─────────────────────────────────────────────────────────── */
+  .skeleton {
+    @apply animate-pulse rounded-lg;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.8s ease-in-out infinite;
+  }
+
+  @keyframes skeleton-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  /* ── Card ─────────────────────────────────────────────────────────────── */
+  .card {
+    @apply rounded-card border border-earth-border p-6;
+    background-color: var(--surface);
+  }
+
+  /* ── Buttons ──────────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl
+           font-medium text-sm transition-all duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed;
+    background: var(--leaf);
+    color: #fff;
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+  }
+  .btn-primary:not(:disabled):hover {
+    background: #7c3aed;
+    box-shadow: 0 0 24px rgba(139, 92, 246, 0.4);
+    transform: translateY(-1px);
+  }
+  .btn-primary:not(:disabled):active {
+    transform: translateY(0);
+  }
+
+  .btn-leaf {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl
+           font-medium text-sm transition-all duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 1px 3px rgba(0,0,0,0.4);
+  }
+  .btn-leaf:not(:disabled):hover {
+    box-shadow: 0 0 32px rgba(139, 92, 246, 0.5), 0 2px 8px rgba(0,0,0,0.4);
+    transform: translateY(-1px);
+  }
+  .btn-leaf:not(:disabled):active {
+    transform: translateY(0);
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.3);
+  }
+
+  /* ── Badge ────────────────────────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* ── Protocol badge (header, hero) ───────────────────────────────────── */
+  .protocol-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    color: #a78bfa;
+  }
+
+  /* ── Form inputs ──────────────────────────────────────────────────────── */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border outline-none text-sm
+           transition-all duration-200 placeholder:text-earth-muted;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border);
+    color: var(--earth-text);
+  }
+  .input-field:focus {
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08);
+  }
+
+  .select-field {
+    @apply w-full px-4 py-3 rounded-xl border outline-none text-sm
+           transition-all duration-200 cursor-pointer appearance-none;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border);
+    color: var(--earth-text);
+  }
+  .select-field:focus {
+    border-color: rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08);
+  }
+
+  /* ── Stat tile ────────────────────────────────────────────────────────── */
+  .stat-tile {
+    @apply rounded-xl p-4 border;
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--border);
+  }
+
+  /* ── Wallet connect button override ──────────────────────────────────── */
+  .connect-btn-wrapper button,
+  .connect-btn-wrapper li button,
+  .connect-btn-wrapper .wallet-adapter-button {
+    height: 40px !important;
+    border-radius: 10px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    background: rgba(139, 92, 246, 0.12) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3) !important;
+    color: #c4b5fd !important;
+    transition: all 0.2s ease !important;
+    padding: 0 16px !important;
+  }
+  .connect-btn-wrapper button:hover,
+  .connect-btn-wrapper .wallet-adapter-button:hover {
+    background: rgba(139, 92, 246, 0.22) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+    box-shadow: 0 0 16px rgba(139, 92, 246, 0.2) !important;
+  }
+
+  /* Wallet modal dark theme */
+  .wallet-adapter-modal-wrapper {
+    background-color: #13131f !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+  }
+  .wallet-adapter-modal-title {
+    color: #f1f5f9 !important;
+    font-size: 18px !important;
+  }
+  .wallet-adapter-modal-list .wallet-adapter-button {
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: #f1f5f9 !important;
+  }
+  .wallet-adapter-modal-list .wallet-adapter-button:hover {
+    background: rgba(139, 92, 246, 0.12) !important;
+  }
+  .wallet-adapter-modal-button-close {
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+}
+
+@layer utilities {
+  /* Gradient text for hero headlines */
+  .gradient-text {
+    background: linear-gradient(135deg, #f1f5f9 20%, #c4b5fd 70%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Subtle dot-grid background for hero sections */
+  .hero-grid {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 0
+    );
+    background-size: 40px 40px;
+  }
+
+  /* Subtle ambient glow behind hero content */
+  .hero-glow::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
