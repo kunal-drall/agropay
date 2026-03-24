@@ -45,12 +45,11 @@ if [[ -n "$EXISTING" ]]; then
 fi
 
 echo "==> Deploying ${PROGRAM_NAME}.aleo to testnet..."
-snarkos developer deploy "${PROGRAM_NAME}.aleo" \
+leo deploy \
+  --network testnet \
+  --endpoint "https://api.explorer.provable.com/v1" \
   --private-key "${PRIVATE_KEY}" \
-  --query "https://api.explorer.provable.com/v1" \
-  --path "./build/" \
-  --broadcast "https://api.explorer.provable.com/v1/testnet/transaction/broadcast" \
-  --fee 5000000
+  --broadcast --yes
 
 echo ""
 echo "==> Deployment submitted."
