@@ -1,0 +1,6 @@
+{
+    "program": "agropay_v2.aleo",
+    "version": "0.2.0",
+    "description": "AGROPAY v2 — @custom constructor, emergency pause, protocol admin",
+    "license": "MIT"
+}
