@@ -1,9 +1,9 @@
-# AGROPAY — AKINDO Wave 4 Submission
+# AGROPAY — AKINDO Submission
 
 **Team:** XXIX Labs (Kunal Drall, Daksh Drall, Priya)
 **Contact:** kd@kosh.finance | hello@29projectslab.com
 **Submission date:** March 2026
-**Wave:** 4 — Aleo Privacy Buildathon
+**Event:** Aleo Privacy Buildathon
 
 ---
 
@@ -28,7 +28,7 @@ Transparent blockchains (Ethereum, Solana) solve the fraud problem for ROSCAs bu
 
 ---
 
-## Changelog (Wave 4)
+## Changelog (v1)
 
 ### Smart contract (`agropay_v1.aleo`)
 
@@ -74,11 +74,11 @@ Transparent blockchains (Ethereum, Solana) solve the fraud problem for ROSCAs bu
 
 ---
 
-## What we explicitly did NOT build (Wave 5 roadmap)
+## What we explicitly did NOT build (v2 roadmap)
 
 | Feature | Why deferred |
 |---------|-------------|
-| USDCx / USAD token transfer | Requires stable cross-program call API. Integration path documented in `docs/ARCHITECTURE.md`. Tracked contributions without credit movement for Wave 4. |
+| USDCx / USAD token transfer | Requires stable cross-program call API. Integration path documented in `docs/ARCHITECTURE.md`. Contributions are tracked without credit movement in v1. |
 | Nullifier anti-double-contribution | Counter bound (`≤ total_members`) limits damage. Per-address nullifiers using `BHP256::hash_to_field` are designed but not deployed. |
 | VRF-based rotation order | Sequential positions are functionally correct. VRF adds privacy for the rotation order. |
 | ZK reputation aggregation | `Credential` record structure is designed for this. Aggregation logic (summing across multiple credentials) is Wave 5. |
@@ -88,7 +88,7 @@ Transparent blockchains (Ethereum, Solana) solve the fraud problem for ROSCAs bu
 
 ---
 
-## Test checklist (Wave 4 testnet)
+## Test checklist (testnet)
 
 ```
 □ 1. Open frontend — see landing page, no fake data
@@ -116,5 +116,5 @@ XXIX Labs previously built [Halo Protocol](https://kosh.finance) on Solana — 5
 
 ---
 
-*AGROPAY Wave 4 Submission — XXIX Labs*
+*AGROPAY Submission — XXIX Labs*
 *Save together. Stay private. Build reputation.*

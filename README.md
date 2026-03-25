@@ -2,7 +2,7 @@
 
 Privacy-preserving savings circles (ROSCAs) on the Aleo blockchain. Zero-knowledge proofs keep individual contributions and payouts private while keeping collective circle state publicly verifiable.
 
-> **Wave 4 — Aleo Privacy Buildathon (AKINDO) | March 2026**
+> **Aleo Privacy Buildathon (AKINDO) | March 2026**
 
 ---
 
@@ -121,10 +121,10 @@ bash scripts/deploy.sh
 
 ---
 
-## Wave 4 limitations (documented, not hidden)
+## v1 limitations (documented, not hidden)
 
 - Contributions are tracked without actual credit movement on testnet. Production integration with `credits.aleo` or `usdcx.aleo` is documented in `agroapy/ARCHITECTURE.md`.
-- `ContributionReceipt.round` is hardcoded to `0u8` — Leo transitions can't read mappings. The actual round is enforced in `finalize`. Wave 5 fix documented in `contracts/agropay/README.md`.
+- `ContributionReceipt.round` is hardcoded to `0u8` — Leo transitions can't read mappings. The actual round is enforced in `finalize`. v2 fix documented in `contracts/agropay/README.md`.
 - No nullifier-based double-contribution prevention. The `contributions_received <= total_members` bound limits damage. Nullifier design is in `agroapy/SECURITY.md`.
 
 ---

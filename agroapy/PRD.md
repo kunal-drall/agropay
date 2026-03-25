@@ -206,7 +206,7 @@ AGROPAY makes community finance private, portable, and programmable. Every savin
 
 ## 6. Module Specifications
 
-### 6.1 Module 1: Circles (MVP — Wave 4)
+### 6.1 Module 1: Circles (MVP — v1)
 
 **Purpose:** Private savings circles with fixed contributions and rotating payouts.
 
@@ -271,11 +271,11 @@ PENDING → ACTIVE → COMPLETED
 
 #### 6.1.4 Value Transfer
 
-**Hackathon scope (Wave 4):** Contributions are tracked without actual token movement. The Leo program validates amounts match the circle configuration but does not call credits.aleo or usdcx.aleo.
+**Hackathon scope (v1):** Contributions are tracked without actual token movement. The Leo program validates amounts match the circle configuration but does not call credits.aleo or usdcx.aleo.
 
 **Production scope:** Each contribution wraps a `credits.aleo::transfer_private` or `usdcx.aleo::transfer_private` call, escrowing funds in the program. Pot claims call the reverse transfer. This requires Aleo's program composition to be stable for cross-program calls.
 
-### 6.2 Module 2: ZK Reputation (Wave 5)
+### 6.2 Module 2: ZK Reputation (v2)
 
 **Purpose:** Privacy-preserving financial identity derived from completed circles.
 
@@ -306,9 +306,9 @@ Aggregate proofs require iterating over multiple credentials. Two approaches:
 
 **Approach B — Off-chain proof generation:** Use the Aleo SDK's programmatic proof generation to create a proof over the credential set client-side, then verify the proof on-chain or present it to a third party. This scales better but requires more SDK work.
 
-Wave 5 will implement Approach A with a practical limit of 10 credentials per aggregate.
+v2 will implement Approach A with a practical limit of 10 credentials per aggregate.
 
-### 6.3 Module 3: Micro-Lending (Wave 5+)
+### 6.3 Module 3: Micro-Lending (v2+)
 
 **Purpose:** Trust-score-gated undercollateralized loans from a shared lending pool.
 
@@ -328,7 +328,7 @@ Wave 5 will implement Approach A with a practical limit of 10 credentials per ag
 | Min reputation | 3 completed circles | Sufficient history to demonstrate reliability |
 | Max loan amount | 50% of total_contributed in reputation | Conservative LTV |
 | Loan term | 1 circle period (matched to frequency) | Aligned with existing behavior |
-| Interest rate | 0% (Wave 5) | Focus on mechanism, not pricing |
+| Interest rate | 0% (v2) | Focus on mechanism, not pricing |
 | Default penalty | -2 circle equivalents from reputation | Meaningful but recoverable |
 
 #### 6.3.3 Privacy Model
@@ -339,7 +339,7 @@ Wave 5 will implement Approach A with a practical limit of 10 credentials per ag
 - Lending pool total → PUBLIC (for solvency verification)
 - Default count (aggregate) → PUBLIC (pool health metric)
 
-### 6.4 Module 4: Private Governance (Wave 5+)
+### 6.4 Module 4: Private Governance (v2+)
 
 **Purpose:** Anonymous voting for circle-level decisions.
 
@@ -411,7 +411,7 @@ After 7 days (hard deadline):
   Option B (governance vote): Members vote to remove non-contributors (67% threshold)
   Option C (no action): Circle continues waiting indefinitely
 
-NOTE: On-chain, there is no enforcement of time-based deadlines in Wave 4.
+NOTE: On-chain, there is no enforcement of time-based deadlines in v1.
 The "deadline" is a social convention tracked by the backend, not enforced by the Leo program.
 Enforcement transitions (auto-skip, auto-dissolve) are planned for production.
 ```
@@ -463,7 +463,7 @@ Enforcement transitions (auto-skip, auto-dissolve) are planned for production.
 
 ### 9.1 Phase 1: Buildathon + Community Seed (Months 1–3)
 
-- Deploy on Aleo Testnet, submit to AKINDO WaveHack Waves 4–5
+- Deploy on Aleo Testnet, submit to AKINDO WaveHack
 - Recruit 5 alpha test circles from Halo Protocol waitlist
 - Target: 50 users, 10 circles, full lifecycle completion on testnet
 - Publish blog posts: "Why Savings Circles Need Privacy" and "Building Community Finance on Aleo"
@@ -513,7 +513,7 @@ Goldfinch is the closest analog in terms of mission (undercollateralized lending
 
 ### 11.1 Product Metrics
 
-| Metric | Definition | Wave 4 Target | Month 6 Target | Month 12 Target |
+| Metric | Definition | v1 Target | Month 6 Target | Month 12 Target |
 |--------|-----------|---------------|----------------|-----------------|
 | Circles created | Total circles initiated | 5 | 100 | 1,000 |
 | Active users | Unique wallets with activity in past 30 days | 15 | 500 | 5,000 |
@@ -544,7 +544,7 @@ Goldfinch is the closest analog in terms of mission (undercollateralized lending
 | R4 | Leo language limitations block features | Low | High | Design around constraints; use hybrid public/private model |
 | R5 | Low user adoption in target markets | Medium | High | Validated by Halo Protocol demand; start with diaspora not rural |
 | R6 | Regulatory scrutiny on privacy features | Medium | Medium | Selective disclosure enables compliance; engage legal counsel early |
-| R7 | Double-contribution exploit (Wave 4) | Medium | Medium | Mitigated by finalize counter; nullifier system in Wave 5 |
+| R7 | Double-contribution exploit (v1) | Medium | Medium | Mitigated by finalize counter; nullifier system in v2 |
 | R8 | Circle griefing (member joins but never contributes) | High | Medium | Governance module for member removal; reputation-gated circles |
 | R9 | Gas costs too high for micro-transactions | Medium | High | Batch operations; subsidize gas for new users; monitor Aleo fee market |
 | R10 | Competition from larger teams building similar product | Low | Medium | First-mover advantage; existing traction; multi-chain positioning |
@@ -577,8 +577,8 @@ Aleo's selective disclosure enables a compliance model where:
 
 | Phase | Timeline | Deliverables |
 |-------|----------|-------------|
-| **Wave 4 (Hackathon MVP)** | Mar 22–29, 2026 | Leo program on testnet, frontend with Shield Wallet, create/join/contribute/claim flows |
-| **Wave 5 (Enhanced MVP)** | Apr 1–15, 2026 | Nullifier anti-sybil, USDCx integration, reputation credential aggregation, improved UX |
+| **v1 (Hackathon MVP)** | Mar 22–29, 2026 | Leo program on testnet, frontend with Shield Wallet, create/join/contribute/claim flows |
+| **v2 (Enhanced MVP)** | Apr 1–15, 2026 | Nullifier anti-sybil, USDCx integration, reputation credential aggregation, improved UX |
 | **Testnet Beta** | Apr–May 2026 | Go backend, PostgreSQL, Redis, chain indexer, full API, notification system |
 | **Mainnet Alpha** | Jun–Jul 2026 | Mainnet deployment, USDCx/USAD production integration, alpha test circles |
 | **Mainnet Beta** | Aug–Sep 2026 | Lending module, governance module, NGO API, mobile-responsive redesign |

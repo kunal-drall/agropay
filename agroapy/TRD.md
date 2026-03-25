@@ -1008,7 +1008,7 @@ On startup, the indexer resumes from `last_height + 1`. Any events in the gap be
 
 ### 6.3 Reorg Handling
 
-Aleo's AleoBFT provides fast finality (~10-15 second blocks). Reorgs beyond 1-2 blocks are extremely rare. The indexer does not implement reorg detection for Wave 4. For production, add a confirmation depth of 5 blocks before processing events.
+Aleo's AleoBFT provides fast finality (~10-15 second blocks). Reorgs beyond 1-2 blocks are extremely rare. The indexer does not implement reorg detection for v1. For production, add a confirmation depth of 5 blocks before processing events.
 
 ---
 
@@ -1381,7 +1381,7 @@ Run: `go test ./...`
 
 ## 13. Migration Plan (Hackathon → Production)
 
-### Phase 1: Hackathon (Wave 4) — Current
+### Phase 1: Hackathon (v1) — Current
 
 - Leo program on testnet (no actual token transfer)
 - Next.js frontend with Shield Wallet

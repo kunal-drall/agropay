@@ -242,9 +242,9 @@ User                Frontend              Wallet              Aleo Network      
 
 2. **Member count at join time:** Each `join_circle` transaction increments the public member counter. While the joining address isn't revealed, the timing of the counter increment could be correlated with other on-chain activity from the same address. Mitigation: negligible risk for most threat models.
 
-3. **Pot claim linkability:** The `claim_pot` transition requires the caller's position to match the current round. An observer who knows member positions (e.g., the admin who shared invite links in order) could infer who claimed. Mitigation: Wave 5 VRF-based rotation randomizes the order.
+3. **Pot claim linkability:** The `claim_pot` transition requires the caller's position to match the current round. An observer who knows member positions (e.g., the admin who shared invite links in order) could infer who claimed. Mitigation: v2 VRF-based rotation randomizes the order.
 
-4. **No double-contribution prevention per-address (Wave 4):** The finalize function increments a counter but doesn't track which addresses contributed. A malicious member could contribute twice and block others. Mitigation: nullifier system in production.
+4. **No double-contribution prevention per-address (v1):** The finalize function increments a counter but doesn't track which addresses contributed. A malicious member could contribute twice and block others. Mitigation: nullifier system in production.
 
 ---
 

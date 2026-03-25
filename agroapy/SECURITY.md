@@ -36,11 +36,11 @@
 #### T1: Double Contribution (Same Member Contributes Twice in One Round)
 
 **Severity:** High
-**Likelihood:** Medium (Wave 4), Low (Production)
+**Likelihood:** Medium (v1), Low (Production)
 
 **Description:** The `contribute` transition increments a public counter in finalize but does not record which address contributed. A member could call `contribute` twice using the same Membership record (consumed and recreated each time), incrementing the counter to its limit before other members can contribute. This would allow the attacker to effectively lock out other members.
 
-**Wave 4 Mitigation:** The frontend enforces one-contribution-per-round by tracking ContributionReceipt records client-side. This is insufficient against a malicious user who bypasses the frontend.
+**v1 Mitigation:** The frontend enforces one-contribution-per-round by tracking ContributionReceipt records client-side. This is insufficient against a malicious user who bypasses the frontend.
 
 **Production Mitigation:** Add a nullifier mapping:
 ```
@@ -168,7 +168,7 @@ The challenge: `self.caller` is not available in finalize (only transitions). Th
 
 **Description:** A member joins a circle and intentionally never contributes, blocking the round from completing and preventing the designated recipient from receiving the pot.
 
-**Wave 4 Mitigation:** Social pressure via the "X of N contributed" counter. The circle effectively stalls.
+**v1 Mitigation:** Social pressure via the "X of N contributed" counter. The circle effectively stalls.
 
 **Production Mitigation:**
 1. Governance vote to remove non-contributing member (67% threshold)
@@ -182,7 +182,7 @@ The challenge: `self.caller` is not available in finalize (only transitions). Th
 
 **Description:** An attacker creates multiple wallets, joins a circle in multiple positions, and manipulates the rotation to concentrate payouts.
 
-**Wave 4 Mitigation:** Invite-only circles (admin shares link with known people). Social trust.
+**v1 Mitigation:** Invite-only circles (admin shares link with known people). Social trust.
 
 **Production Mitigation:**
 1. Require zPass identity verification (one verified identity per position)
