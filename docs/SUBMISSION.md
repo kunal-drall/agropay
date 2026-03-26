@@ -23,7 +23,7 @@ Transparent blockchains (Ethereum, Solana) solve the fraud problem for ROSCAs bu
 |-----------|----------|
 | Leo program | `agropay_v1.aleo` on Aleo Testnet |
 | Program explorer | https://testnet.aleoscan.io/program?id=agropay_v1.aleo |
-| Frontend | (deployment URL) |
+| Frontend | https://agropay-frontend.vercel.app |
 | GitHub | https://github.com/xxix-labs/agropay |
 
 ---
